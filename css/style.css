@@ -2,7 +2,15 @@ body {
     height: 100vh;
     margin: 0;
     font-family: "Jersey 15", sans-serif;
+    display: flex;
+    justify-content: space-between;
     background-color: black;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
 main {

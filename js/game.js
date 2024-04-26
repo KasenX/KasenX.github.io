@@ -11,17 +11,37 @@ export default class Game {
     #oWins = 0;
     #ties = 0;
 
-    constructor(playerX, playerO) {
-        this.#state = ['', '', '', '', '', '', '', '', ''];
-        this.#board = document.querySelectorAll('.square');
+    #listeners = new Map();
 
+    constructor(playerX, playerO) {
         this.#playerX = playerX;
         this.#playerO = playerO;
+        document.getElementById('x-name').textContent = this.#playerX + " (X)";
+        document.getElementById('o-name').textContent = this.#playerO + " (O)";
 
-        document.getElementById('x-name').textContent = playerX + " (X)";
-        document.getElementById('o-name').textContent = playerO + " (O)";
+        this.#state = ['', '', '', '', '', '', '', '', ''];
+        this.#board = document.querySelectorAll('.square');
+        this.#setupListeners();
+    }
 
-        this.#board.forEach((square, index) => square.addEventListener('click', e => this.#handleClick(e, index)));
+    cleanup() {
+        document.querySelector('#x-wins').textContent = 0;
+        document.querySelector('#o-wins').textContent = 0;
+        document.querySelector('#ties').textContent = 0;
+
+        this.#board.forEach(square => {
+            square.textContent = '';
+            const handler = this.#listeners.get(square);
+            square.removeEventListener('click', handler);
+        });
+    }
+
+    #setupListeners() {
+        this.#board.forEach((square, index) => {
+            const handler = (e) => this.#handleClick(e, index);
+            this.#listeners.set(square, handler);
+            square.addEventListener('click', handler);
+        });
     }
 
     #handleClick(e, index) {

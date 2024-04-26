@@ -2,29 +2,44 @@ import Game from './game.js';
 
 let playerX = null;
 let playerO = null;
+let game = null;
 
 const dialog = document.querySelector('dialog')
 const dialogButton = document.querySelector('dialog button')
+const resetButton = document.getElementById('reset-button');
+
+function startNewGame() {
+    dialog.showModal();
+}
 
 dialogButton.addEventListener('click', event => {
     event.preventDefault();
 
-    playerX = dialog.querySelector('input[name="player-x"]').value;
-    playerO = dialog.querySelector('input[name="player-o"]').value;
+    const inputX = dialog.querySelector('input[name="player-x"]');
+    const inputO = dialog.querySelector('input[name="player-o"]');
 
-    if (playerX === '' || playerO === '') {
-        return;
+    if (inputX.value === '' || inputO.value === '') {
+        return; 
     }
 
+    playerX = inputX.value;
+    playerO = inputO.value;
+    inputX.value = inputO.value = '';
+
     dialog.close();
+
+    if (game) {
+        game.cleanup();
+    }
+    game = new Game(playerX, playerO);
 });
 
 dialog.addEventListener('cancel', event => {
     event.preventDefault();
 });
 
-dialog.addEventListener('close', () => {
-    const game = new Game(playerX, playerO);
-})
+resetButton.addEventListener('click', () => {
+    startNewGame();
+});
 
-dialog.showModal();
+startNewGame();
