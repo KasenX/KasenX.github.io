@@ -3,14 +3,23 @@ export default class Game {
     #state;
     #board;
 
+    #playerX
+    #playerO
+
     #onTurn = 'X'; // Odd rounds => X starts, even rounds => O starts
     #xWins = 0;
     #oWins = 0;
     #ties = 0;
 
-    constructor() {
+    constructor(playerX, playerO) {
         this.#state = ['', '', '', '', '', '', '', '', ''];
         this.#board = document.querySelectorAll('.square');
+
+        this.#playerX = playerX;
+        this.#playerO = playerO;
+
+        document.getElementById('x-name').textContent = playerX + " (X)";
+        document.getElementById('o-name').textContent = playerO + " (O)";
 
         this.#board.forEach((square, index) => square.addEventListener('click', e => this.#handleClick(e, index)));
     }

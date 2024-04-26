@@ -25,14 +25,22 @@
                 <div class="square"></div>
             </div>
             <div class="scores">
-                <div>Player 1 (x)</div>
+                <div id="x-name">X</div>
                 <div>Tie</div>
-                <div>Player 2 (o)</div>
+                <div id="o-name">O</div>
                 <div id="x-wins">0</div>
                 <div id="ties">0</div>
                 <div id="o-wins">0</div>
             </div>
         </main>
+
+        <dialog>
+            <form>
+                <label>X Player <input type="text" name="player-x"/></label>
+                <label>O Player <input type="text" name="player-o"/></label>
+                <button>Play!</button>
+            </form>
+        </dialog>
 
         <script type="module" src="js/app.js"></script>
     </body>
