@@ -15,7 +15,7 @@ export default class Leaderboard {
             this.#addRow(key, value);
         }
 
-        this.#page.style.display = 'block';
+        this.#page.style.display = 'flex';
     }
 
     hide() {

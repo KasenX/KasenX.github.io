@@ -1,7 +1,7 @@
 body {
     height: 100vh;
     margin: 0;
-    font-family: "Jersey 15", sans-serif;
+    font-family: "Jersey 25", sans-serif;
     display: flex;
     justify-content: space-between;
     background-color: black;
@@ -65,6 +65,35 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     z-index: 100;
+}
+
+#leaderboard h1 {
+    font-size: 5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#leaderboard-table {
+    font-size: 4rem;
+    width: 20vw;
+    border-collapse: collapse;
+}
+
+#leaderboard-table td {
+    border-bottom: 4px solid white;
+}
+
+#leaderboard-table td:first-child {
+    text-align: left;
+}
+
+#leaderboard-table td:last-child {
+    text-align: right;
+}
+
+#leaderboard-table tr:last-child td {
+    border-bottom: 0;
 }
