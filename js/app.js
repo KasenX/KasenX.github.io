@@ -1,6 +1,3 @@
-import navigateTo from './navigation.js'; 
+import Game from './game.js';
 
-document.getElementById('gameBtn').addEventListener('click', () => navigateTo('game'));
-document.getElementById('leaderboardBtn').addEventListener('click', () => navigateTo('leaderboard'));
-
-navigateTo('home');
+const game = new Game();

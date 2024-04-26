@@ -25,6 +25,7 @@ main {
 .square {
     width: auto;
     height: auto;
+    color: white;
     background-color: black;
 }
 
