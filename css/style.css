@@ -1,0 +1,42 @@
+body {
+    height: 100vh;
+    margin: 0;
+    font-family: "Jersey 15", sans-serif;
+    background-color: black;
+}
+
+main {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.game {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 5px;
+    width: 600px;
+    height: 600px;
+    background-color: white;
+}
+
+.square {
+    width: auto;
+    height: auto;
+    background-color: black;
+}
+
+.scores {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.scores div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3rem;
+    color: white;
+}
