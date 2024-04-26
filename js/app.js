@@ -1,3 +1,4 @@
+import Leaderboard from './leaderboard.js';
 import Game from './game.js';
 
 let playerX = null;
@@ -7,6 +8,19 @@ let game = null;
 const dialog = document.querySelector('dialog')
 const dialogButton = document.querySelector('dialog button')
 const resetButton = document.getElementById('reset-button');
+const leaderboardButton = document.getElementById('leaderboard-button');
+const leaderboardDiv = document.getElementById('leaderboard');
+
+const leaderboard = new Leaderboard();
+
+leaderboardButton.addEventListener('click', () => {
+    if (leaderboardDiv.style.display === 'none') {
+        leaderboard.show();
+    }
+    else {
+        leaderboard.hide();
+    }
+});
 
 function startNewGame() {
     dialog.showModal();
