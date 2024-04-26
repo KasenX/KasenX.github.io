@@ -9,10 +9,18 @@ export default class Leaderboard {
     }
 
     show() {
+        const entries = []
+
         for (let i = 0; i < localStorage.length; i++) {
             const key = localStorage.key(i);
             const value = localStorage.getItem(key);
-            this.#addRow(key, value);
+            entries.push([key, value]);   
+        }
+
+        entries.sort((a, b) => b[1] - a[1]);
+
+        for (const [name, wins] of entries) {
+            this.#addRow(name, wins);
         }
 
         this.#page.style.display = 'flex';
