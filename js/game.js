@@ -93,8 +93,21 @@ export default class Game {
             this.#oWins++;
         }
 
+        this.#saveScore(winner);
         this.#updateScore();
         this.#resetBoard();
+    }
+
+    #saveScore(winner) {
+        if (winner === 'X') {
+            const scoreX = localStorage.getItem(this.#playerX) ?? 0;
+            localStorage.setItem(this.#playerX, parseInt(scoreX) + 1);
+        }
+        else if (winner === 'O') {
+            const scoreO = localStorage.getItem(this.#playerO) ?? 0;
+            localStorage.setItem(this.#playerO, parseInt(scoreO) + 1);
+        }
+
     }
 
     #updateScore() {
