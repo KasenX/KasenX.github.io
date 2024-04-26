@@ -54,6 +54,14 @@ main {
     color: white;
 }
 
+#x-name::after {
+    content: "\00a0(X)";
+}
+
+#o-name::after {
+    content: "\00a0(O)";
+}
+
 #leaderboard {
     position: fixed;
     top: 0;

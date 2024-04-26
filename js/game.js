@@ -14,10 +14,8 @@ export default class Game {
     #listeners = new Map();
 
     constructor(playerX, playerO) {
-        this.#playerX = playerX;
-        this.#playerO = playerO;
-        document.getElementById('x-name').textContent = this.#playerX + " (X)";
-        document.getElementById('o-name').textContent = this.#playerO + " (O)";
+        document.getElementById('x-name').textContent = this.#playerX = playerX;
+        document.getElementById('o-name').textContent = this.#playerO = playerO;
 
         this.#state = ['', '', '', '', '', '', '', '', ''];
         this.#board = document.querySelectorAll('.square');
