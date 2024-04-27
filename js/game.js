@@ -70,10 +70,14 @@ export default class Game {
 
         if (this.#onTurn === 'X') {
             e.target.appendChild(this.#xSVG.cloneNode(true));
+            this.#xSound.pause();
+            this.#xSound.currentTime = 0;
             this.#xSound.play();
             this.#onTurn = 'O';
         } else {
             e.target.appendChild(this.#oSVG.cloneNode(true));
+            this.#oSound.pause();
+            this.#oSound.currentTime = 0;
             this.#oSound.play();
             this.#onTurn = 'X';
         }
