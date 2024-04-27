@@ -7,6 +7,49 @@ body {
     background-color: black;
 }
 
+dialog {
+    width: 300px;
+    padding: 20px;
+    border-radius: 5%;
+    color: black;
+    background: white;
+}
+
+dialog form {
+    display: flex;
+    flex-direction: column;
+}
+
+dialog label {
+    margin: 10px 0;
+    font-size: 16px;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+dialog input {
+    padding: 10px;
+    border: 2px solid black;
+}
+
+dialog button {
+    background-color: black;
+    color: white;
+    border: 2px solid black; /* Solid border for the button */
+    padding: 10px 0px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+dialog button:hover {
+    background-color: white;
+    color: black;
+}
+
 nav {
     z-index: 101;
 }
