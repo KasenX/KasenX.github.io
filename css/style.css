@@ -78,6 +78,11 @@ nav ul {
     height: 48px;
 }
 
+.img-button:hover, .img-button:hover svg {
+    color: black;
+    background-color: white;
+}
+
 main {
     height: 100%;
     display: flex;
