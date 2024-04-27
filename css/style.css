@@ -17,6 +17,24 @@ nav ul {
     padding: 0;
 }
 
+.img-button {
+    background: none;
+    border: solid 3px white;
+    border-radius: 10%;
+    cursor: pointer;
+    padding: 8px;
+    margin: 10px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.img-button svg {
+    color: white;
+    width: 48px;
+    height: 48px;
+}
+
 main {
     height: 100%;
     display: flex;
