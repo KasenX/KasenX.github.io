@@ -7,6 +7,7 @@ export default class Game {
     #playerO
 
     #onTurn = 'X'; // Odd rounds => X starts, even rounds => O starts
+    #end = false;
     #xWins = 0;
     #oWins = 0;
     #ties = 0;
@@ -54,6 +55,12 @@ export default class Game {
     }
 
     #handleClick(e, index) {
+        if (this.#end) {
+            this.#end = false;
+            this.#resetBoard();
+            return;
+        }
+
         // Square already taken
         if (this.#state[index] !== '') {
             return;
@@ -110,9 +117,9 @@ export default class Game {
             this.#oWins++;
         }
 
+        this.#end = true;
         this.#saveScore(winner);
         this.#updateScore();
-        this.#resetBoard();
     }
 
     #saveScore(winner) {
