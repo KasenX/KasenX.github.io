@@ -8,6 +8,7 @@ export default class Game {
 
     #onTurn = 'X'; // Odd rounds => X starts, even rounds => O starts
     #end = false;
+    #endTimeout = false;
     #xWins = 0;
     #oWins = 0;
     #ties = 0;
@@ -58,6 +59,9 @@ export default class Game {
     }
 
     #handleClick(e, index) {
+        if (this.#endTimeout) {
+            return;
+        }
         if (this.#end) {
             this.#end = false;
             this.#resetBoard();
@@ -130,6 +134,9 @@ export default class Game {
         })
 
         this.#end = true;
+        this.#endTimeout = true;
+        setTimeout(() => { this.#endTimeout = false; }, 1500);
+
         this.#saveScore(winner);
         this.#updateScore(winner);
     }
