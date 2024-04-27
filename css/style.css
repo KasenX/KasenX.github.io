@@ -53,8 +53,12 @@ main {
 }
 
 .square {
-    width: auto;
-    height: auto;
+    width: 200px;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
     color: white;
     background-color: black;
 }

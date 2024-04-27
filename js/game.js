@@ -13,6 +13,12 @@ export default class Game {
 
     #listeners = new Map();
 
+    #xSVGstring = '<svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg"><line x1="20" y1="20" x2="80" y2="80" stroke="currentColor" stroke-width="10"/><line x1="80" y1="20" x2="20" y2="80" stroke="currentColor" stroke-width="10"/></svg>';
+    #oSVGstring = '<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="30" stroke="currentColor" stroke-width="10" fill="none"/></svg>';
+
+    #xSVG;
+    #oSVG;
+
     constructor(playerX, playerO) {
         document.getElementById('x-name').textContent = this.#playerX = playerX;
         document.getElementById('o-name').textContent = this.#playerO = playerO;
@@ -20,6 +26,8 @@ export default class Game {
         this.#state = ['', '', '', '', '', '', '', '', ''];
         this.#board = document.querySelectorAll('.square');
         this.#setupListeners();
+
+        this.#prepareSVG();
     }
 
     cleanup() {
@@ -28,7 +36,7 @@ export default class Game {
         document.querySelector('#ties').textContent = 0;
 
         this.#board.forEach(square => {
-            square.textContent = '';
+            square.innerHTML = '';
             const handler = this.#listeners.get(square);
             square.removeEventListener('click', handler);
         });
@@ -49,7 +57,7 @@ export default class Game {
         }
 
         this.#state[index] = this.#onTurn;
-        e.target.textContent = this.#onTurn;
+        e.target.appendChild(this.#onTurn === 'X' ? this.#xSVG.cloneNode(true) : this.#oSVG.cloneNode(true));
         this.#onTurn = this.#onTurn === 'X' ? 'O' : 'X';
         
         const winner = this.#checkWinner();
@@ -118,6 +126,12 @@ export default class Game {
         // Even number of rounds => next round is odd => X starts (and vice versa)
         this.#onTurn = (this.#ties + this.#xWins + this.#oWins) % 2 === 0 ? 'X' : 'O';
         this.#state = ['', '', '', '', '', '', '', '', ''];
-        this.#board.forEach(square => square.textContent = '');
+        this.#board.forEach(square => square.innerHTML = '');
+    }
+
+    #prepareSVG() {
+        const parser = new DOMParser();
+        this.#xSVG = parser.parseFromString(this.#xSVGstring, 'image/svg+xml').documentElement;
+        this.#oSVG = parser.parseFromString(this.#oSVGstring, 'image/svg+xml').documentElement;
     }
 }
