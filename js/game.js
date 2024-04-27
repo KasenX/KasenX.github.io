@@ -19,6 +19,9 @@ export default class Game {
     #xSVG;
     #oSVG;
 
+    #xSound;
+    #oSound;
+
     constructor(playerX, playerO) {
         document.getElementById('x-name').textContent = this.#playerX = playerX;
         document.getElementById('o-name').textContent = this.#playerO = playerO;
@@ -27,7 +30,7 @@ export default class Game {
         this.#board = document.querySelectorAll('.square');
         this.#setupListeners();
 
-        this.#prepareSVG();
+        this.#prepareAssets();
     }
 
     cleanup() {
@@ -57,8 +60,16 @@ export default class Game {
         }
 
         this.#state[index] = this.#onTurn;
-        e.target.appendChild(this.#onTurn === 'X' ? this.#xSVG.cloneNode(true) : this.#oSVG.cloneNode(true));
-        this.#onTurn = this.#onTurn === 'X' ? 'O' : 'X';
+
+        if (this.#onTurn === 'X') {
+            e.target.appendChild(this.#xSVG.cloneNode(true));
+            this.#xSound.play();
+            this.#onTurn = 'O';
+        } else {
+            e.target.appendChild(this.#oSVG.cloneNode(true));
+            this.#oSound.play();
+            this.#onTurn = 'X';
+        }
         
         const winner = this.#checkWinner();
 
@@ -129,9 +140,12 @@ export default class Game {
         this.#board.forEach(square => square.innerHTML = '');
     }
 
-    #prepareSVG() {
+    #prepareAssets() {
         const parser = new DOMParser();
         this.#xSVG = parser.parseFromString(this.#xSVGstring, 'image/svg+xml').documentElement;
         this.#oSVG = parser.parseFromString(this.#oSVGstring, 'image/svg+xml').documentElement;
+
+        this.#xSound = new Audio('assets/x_sound.wav');
+        this.#oSound = new Audio('assets/o_sound.wav');
     }
 }
