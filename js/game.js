@@ -12,16 +12,18 @@ export default class Game {
     #oWins = 0;
     #ties = 0;
 
-    #listeners = new Map();
+    #xWinsTag = document.getElementById('x-wins');
+    #oWinsTag = document.getElementById('o-wins');
+    #tiesTag = document.getElementById('ties');
 
     #xSVGstring = '<svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg"><line x1="20" y1="20" x2="80" y2="80" stroke="currentColor" stroke-width="10"/><line x1="80" y1="20" x2="20" y2="80" stroke="currentColor" stroke-width="10"/></svg>';
     #oSVGstring = '<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="30" stroke="currentColor" stroke-width="10" fill="none"/></svg>';
-
     #xSVG;
     #oSVG;
-
     #xSound;
     #oSound;
+
+    #listeners = new Map();
 
     constructor(playerX, playerO) {
         document.getElementById('x-name').textContent = this.#playerX = playerX;
@@ -35,9 +37,9 @@ export default class Game {
     }
 
     cleanup() {
-        document.querySelector('#x-wins').textContent = 0;
-        document.querySelector('#o-wins').textContent = 0;
-        document.querySelector('#ties').textContent = 0;
+        this.#xWinsTag.textContent = 0;
+        this.#oWinsTag.textContent = 0;
+        this.#tiesTag.textContent = 0;
 
         this.#board.forEach(square => {
             square.innerHTML = '';
@@ -113,17 +115,9 @@ export default class Game {
     }
 
     #endRound(winner) {
-        if (winner === 'T') {
-            this.#ties++;
-        } else if (winner === 'X') {
-            this.#xWins++;
-        } else if (winner === 'O') {
-            this.#oWins++;
-        }
-
         this.#end = true;
         this.#saveScore(winner);
-        this.#updateScore();
+        this.#updateScore(winner);
     }
 
     #saveScore(winner) {
@@ -138,10 +132,23 @@ export default class Game {
 
     }
 
-    #updateScore() {
-        document.querySelector('#x-wins').textContent = this.#xWins;
-        document.querySelector('#o-wins').textContent = this.#oWins;
-        document.querySelector('#ties').textContent = this.#ties;
+    #updateScore(winner) {
+        if (winner === 'T') {
+            this.#ties++;
+            this.#tiesTag.textContent = this.#ties;
+            this.#tiesTag.classList.add('blinking-text');
+            setTimeout(() => { this.#tiesTag.classList.remove('blinking-text'); }, 2000);
+        } else if (winner === 'X') {
+            this.#xWins++;
+            this.#xWinsTag.textContent = this.#xWins;
+            this.#xWinsTag.classList.add('blinking-text');
+            setTimeout(() => { this.#xWinsTag.classList.remove('blinking-text'); }, 2000);
+        } else if (winner === 'O') {
+            this.#oWins++;
+            this.#oWinsTag.textContent = this.#oWins;
+            this.#oWinsTag.classList.add('blinking-text');
+            setTimeout(() => { this.#oWinsTag.classList.remove('blinking-text'); }, 2000);
+        }
     }
 
     #resetBoard() {

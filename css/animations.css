@@ -1,3 +1,9 @@
+dialog input.error {
+    animation: shake 0.85s linear;
+    transform: translate(0, 0);
+    border: 2px solid red;
+}
+
 @keyframes shake {
     10%, 90% {
         transform: translate(-1px, 0);
@@ -13,8 +19,15 @@
     }
 }
 
-dialog input.error {
-    animation: shake 0.85s linear;
-    transform: translate(0, 0);
-    border: 2px solid red;
+.blinking-text {
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
 }
