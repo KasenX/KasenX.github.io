@@ -19,8 +19,8 @@ dialog input.error {
     }
 }
 
-.blinking-text {
-    animation: blink 1s infinite;
+.blinking {
+    animation: blink 0.5s infinite;
 }
 
 @keyframes blink {

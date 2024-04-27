@@ -111,6 +111,18 @@ main {
     background-color: black;
 }
 
+.square svg {
+    transition: transform 1s ease-in-out;
+}
+
+.win svg {
+    color: red;
+}
+
+.irrelevant svg {
+    opacity: 0.5;
+}
+
 .scores {
     display: grid;
     grid-template-columns: repeat(3, 1fr);

@@ -43,6 +43,7 @@ export default class Game {
 
         this.#board.forEach(square => {
             square.innerHTML = '';
+            square.classList.remove('win', 'irrelevant');
             const handler = this.#listeners.get(square);
             square.removeEventListener('click', handler);
         });
@@ -102,19 +103,32 @@ export default class Game {
             const [a, b, c] = combo;
 
             if (this.#state[a] && this.#state[a] === this.#state[b] && this.#state[a] === this.#state[c]) {
-                return this.#state[a];
+                return combo;
             }
         }
 
         // No empty squares without a winner => tie
         if (!this.#state.includes('')) {
-            return 'T';
+            return [];
         }
 
         return null;
     }
 
-    #endRound(winner) {
+    #endRound(winningCombo) {
+        const winner = winningCombo.length === 0 ? 'T' : this.#state[winningCombo[0]];
+
+        this.#board.forEach((square, index) => {
+            if (winningCombo.includes(index)) {
+                square.classList.add('win');
+                square.querySelector('svg').classList.add('blinking');
+                setTimeout(() => { square.querySelector('svg').classList.remove('blinking') }, 1500);
+            }
+            else {  
+                square.classList.add('irrelevant');
+            }
+        })
+
         this.#end = true;
         this.#saveScore(winner);
         this.#updateScore(winner);
@@ -136,18 +150,18 @@ export default class Game {
         if (winner === 'T') {
             this.#ties++;
             this.#tiesTag.textContent = this.#ties;
-            this.#tiesTag.classList.add('blinking-text');
-            setTimeout(() => { this.#tiesTag.classList.remove('blinking-text'); }, 2000);
+            this.#tiesTag.classList.add('blinking');
+            setTimeout(() => { this.#tiesTag.classList.remove('blinking'); }, 1500);
         } else if (winner === 'X') {
             this.#xWins++;
             this.#xWinsTag.textContent = this.#xWins;
-            this.#xWinsTag.classList.add('blinking-text');
-            setTimeout(() => { this.#xWinsTag.classList.remove('blinking-text'); }, 2000);
+            this.#xWinsTag.classList.add('blinking');
+            setTimeout(() => { this.#xWinsTag.classList.remove('blinking'); }, 1500);
         } else if (winner === 'O') {
             this.#oWins++;
             this.#oWinsTag.textContent = this.#oWins;
-            this.#oWinsTag.classList.add('blinking-text');
-            setTimeout(() => { this.#oWinsTag.classList.remove('blinking-text'); }, 2000);
+            this.#oWinsTag.classList.add('blinking');
+            setTimeout(() => { this.#oWinsTag.classList.remove('blinking'); }, 1500);
         }
     }
 
@@ -155,7 +169,10 @@ export default class Game {
         // Even number of rounds => next round is odd => X starts (and vice versa)
         this.#onTurn = (this.#ties + this.#xWins + this.#oWins) % 2 === 0 ? 'X' : 'O';
         this.#state = ['', '', '', '', '', '', '', '', ''];
-        this.#board.forEach(square => square.innerHTML = '');
+        this.#board.forEach(square => {
+            square.innerHTML = '';
+            square.classList.remove('win', 'irrelevant');
+        });
     }
 
     #prepareAssets() {
