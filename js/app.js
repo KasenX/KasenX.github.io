@@ -40,12 +40,10 @@ dialogButton.addEventListener('click', event => {
         return;
     }
     if (inputX.value.trim() === '') {
-        valid = false;
         inputX.classList.add('error');
         setTimeout(() => { inputX.classList.remove('error'); }, 850);
     }
     if (inputO.value.trim() === '') {
-        valid = false;
         inputO.classList.add('error');
         setTimeout(() => { inputO.classList.remove('error'); }, 850);
     }
