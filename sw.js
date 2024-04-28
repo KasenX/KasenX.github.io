@@ -7,6 +7,7 @@ const urlsToCache = [
 	"js/app.js",
 	"js/game.js",
 	"js/leaderboard.js",
+	"assets/favicon.ico",
 	"assets/Jersey25-Regular.ttf",
 	"assets/x_sound.wav",
 	"assets/o_sound.wav"
