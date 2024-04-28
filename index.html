@@ -3,6 +3,7 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="Play Tic Tac Toe in the game for two local players. Keep track of your scores and see who the ultimate champion is!">
         <title>Tic Tac Toe</title>
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="css/animations.css">
@@ -12,42 +13,20 @@
     </head>
 
     <body>
-        <nav>
-            <ul>
-                <li>
-                    <button id="leaderboard-button" class="img-button">
-                        <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M22,7H16.333V4a1,1,0,0,0-1-1H8.667a1,1,0,0,0-1,1v7H2a1,1,0,0,0-1,1v8a1,1,0,0,0,1,1H22a1,1,0,0,0,1-1V8A1,1,0,0,0,22,7ZM7.667,19H3V13H7.667Zm6.666,0H9.667V5h4.666ZM21,19H16.333V9H21Z"/>
-                        </svg>
-                    </button>
-                </li>
-            </ul>
-        </nav>
+        <header>
+            <nav>
+                <ul>
+                    <li>
+                        <button id="leaderboard-button" class="img-button" aria-label="Show leaderboard">
+                            <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M22,7H16.333V4a1,1,0,0,0-1-1H8.667a1,1,0,0,0-1,1v7H2a1,1,0,0,0-1,1v8a1,1,0,0,0,1,1H22a1,1,0,0,0,1-1V8A1,1,0,0,0,22,7ZM7.667,19H3V13H7.667Zm6.666,0H9.667V5h4.666ZM21,19H16.333V9H21Z"/>
+                            </svg>
+                        </button>
+                    </li>
+                </ul>
+            </nav>
 
-        <main>
-            <div class="game">
-                <div class="square"></div>
-                <div class="square"></div>
-                <div class="square"></div>
-                <div class="square"></div>
-                <div class="square"></div>
-                <div class="square"></div>
-                <div class="square"></div>
-                <div class="square"></div>
-                <div class="square"></div>
-            </div>
-            <div class="scores">
-                <div id="x-name">X</div>
-                <div>Tie</div>
-                <div id="o-name">O</div>
-                <div id="x-wins">0</div>
-                <div id="ties">0</div>
-                <div id="o-wins">0</div>
-            </div>
-        </main>
-
-        <div>
-            <button id="reset-button" class="img-button">
+            <button id="reset-button" class="img-button" aria-label="Restart game">
                 <svg viewBox="0 0 1200 1200" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                     <path d="M600,0C268.629,0,0,268.629,0,600s268.629,600,600,600
                         c222.411,0,416.39-121.104,520.02-300.879L908.79,777.612C847.217,884.405,732.127,956.47,600,956.47
@@ -55,11 +34,36 @@
                         L1200,612.524V53.613l-174.17,123.926C917.124,67.952,766.553,0,600,0z"/>
                 </svg>
             </button>
-        </div>
+        </header>
+
+        <main>
+            <section class="game">
+                <div class="square" role="button"></div>
+                <div class="square" role="button"></div>
+                <div class="square" role="button"></div>
+                <div class="square" role="button"></div>
+                <div class="square" role="button"></div>
+                <div class="square" role="button"></div>
+                <div class="square" role="button"></div>
+                <div class="square" role="button"></div>
+                <div class="square" role="button"></div>
+            </section>
+        </main>
+
+        <footer>
+            <section class="scores">
+                <div id="x-name">X</div>
+                <div>Tie</div>
+                <div id="o-name">O</div>
+                <div id="x-wins">0</div>
+                <div id="ties">0</div>
+                <div id="o-wins">0</div>
+            </section>
+        </footer>
 
         <article id="leaderboard" style="display: none;">
             <h1>Number of wins</h1>
-            <table id="leaderboard-table">
+            <table>
                 <tbody>
                 </tbody>
             </table>

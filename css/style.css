@@ -3,51 +3,13 @@ body {
     margin: 0;
     font-family: "Jersey 25", sans-serif;
     display: flex;
-    justify-content: space-between;
-    background-color: black;
-}
-
-dialog {
-    width: 300px;
-    padding: 20px;
-    border-radius: 5%;
-    color: black;
-    background: white;
-}
-
-dialog form {
-    display: flex;
     flex-direction: column;
+    background-color: black;
 }
 
-dialog label {
-    margin: 10px 0;
-    font-size: 16px;
-    font-weight: bold;
+header {
     display: flex;
     justify-content: space-between;
-    align-items: baseline;
-}
-
-dialog input {
-    padding: 10px;
-    border: 2px solid black;
-}
-
-dialog button {
-    background-color: black;
-    color: white;
-    border: 2px solid black; /* Solid border for the button */
-    padding: 10px 0px;
-    font-size: 16px;
-    cursor: pointer;
-    margin-top: 20px;
-    transition: background-color 0.3s, color 0.3s;
-}
-
-dialog button:hover {
-    background-color: white;
-    color: black;
 }
 
 nav {
@@ -81,13 +43,14 @@ nav ul {
 .img-button:hover, .img-button:hover svg {
     color: black;
     background-color: white;
+    transition: background-color 0.3s, color 0.3s;
 }
 
 main {
     height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: flex-start;
     align-items: center;
 }
 
@@ -111,16 +74,18 @@ main {
     background-color: black;
 }
 
-.square svg {
-    transition: transform 1s ease-in-out;
-}
-
 .win svg {
     color: red;
 }
 
 .irrelevant svg {
     opacity: 0.5;
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 7vh;
 }
 
 .scores {
@@ -166,24 +131,66 @@ main {
     align-items: center;
 }
 
-#leaderboard-table {
+#leaderboard table {
     font-size: 4rem;
     width: 20vw;
     border-collapse: collapse;
 }
 
-#leaderboard-table td {
+#leaderboard table td {
     border-bottom: 4px solid white;
 }
 
-#leaderboard-table td:first-child {
+#leaderboard table td:first-child {
     text-align: left;
 }
 
-#leaderboard-table td:last-child {
+#leaderboard table td:last-child {
     text-align: right;
 }
 
-#leaderboard-table tr:last-child td {
+#leaderboard table tr:last-child td {
     border-bottom: 0;
+}
+
+dialog {
+    width: 300px;
+    padding: 20px;
+    border-radius: 5%;
+    color: black;
+    background: white;
+}
+
+dialog form {
+    display: flex;
+    flex-direction: column;
+    font-size: 1rem;
+}
+
+dialog label {
+    margin: 10px 0;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+dialog input {
+    padding: 10px;
+    border: 2px solid black;
+}
+
+dialog button {
+    margin-top: 20px;
+    padding: 10px 0px;
+    color: white;
+    border: 2px solid black;
+    background-color: black;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+dialog button:hover {
+    color: black;
+    background-color: white;
 }
