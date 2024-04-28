@@ -43,7 +43,7 @@ You need to have a modern web browser like Google Chrome, Mozilla Firefox, or Mi
 2. **Enter player names.**
 3. **Click on the grid to make your move.**
 4. **First player to align three of their symbols vertically, horizontally, or diagonally wins!**
-5. **Play next game or press the reset button to start a new game with different players' names.**
+5. **Play next game or press the reset button to start a new game with different player names.**
 
 ## Contributing 🤝
 Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make are greatly appreciated.
