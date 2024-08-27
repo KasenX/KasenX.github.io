@@ -2,6 +2,9 @@
 
 Welcome to the GitHub repository for my Tic Tac Toe game! This project is an interactive, web-based version of the classic game, designed to be simple, fun, and accessible. Play against a friend right from your browser!
 
+## Preview 👀
+![Preview](./preview.png)
+
 ## Features ✨
 
 - **Play multiplayer:** Enjoy the game with a friend.
